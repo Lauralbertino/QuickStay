@@ -1,7 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h2>Lista de Hóspedes</h2>
-<a href="{% url 'criar_hospede' %}">Adicionar Hóspede</a>
-<ul>
-    {% for hospede in hospedes %}
-    <li>{{ hospede.nome }} - {{ hospede.telefone }} - {{ hospede.email }}</li>
-    {% endfor %}
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hospede in hospedes %}
+        <tr>
+            <td>{{ hospede.nome }}</td>
+            <td>{{ hospede.telefone }}</td>
+            <td>{{ hospede.email }}</td>
+            <td>
+                <a href="{% url 'editar_hospede' hospede.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'deletar_hospede' hospede.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">Nenhum hóspede cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

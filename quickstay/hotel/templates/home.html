@@ -1,3 +1,21 @@
-<h1>Bem-vindo ao QuickStay</h1>
-<a href="{% url 'listar_hospedes' %}">Gerenciar Hóspedes</a><br>
-<a href="{% url 'listar_reservas' %}">Gerenciar Reservas</a>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-4">Bem-vindo ao QuickStay</h1>
+            <p class="lead">Gerencie suas reservas e hóspedes de forma simples e rápida.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'listar_hospedes' %}" class="btn btn-primary btn-lg w-100">Gerenciar Hóspedes</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'listar_reservas' %}" class="btn btn-success btn-lg w-100">Gerenciar Reservas</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

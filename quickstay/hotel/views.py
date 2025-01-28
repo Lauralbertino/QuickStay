@@ -32,3 +32,24 @@ def criar_reserva(request):
     else:
         form = ReservaForm()
     return render(request, "criar_reserva.html", {"form": form})
+
+def editar_hospede(request, id):
+    hospede = get_object_or_404(Hospede, id=id)
+    
+    if request.method == 'POST':
+        form = HospedeForm(request.POST, instance=hospede)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_hospedes')  # Redireciona para a lista de hóspedes
+    else:
+        form = HospedeForm(instance=hospede)
+
+    return render(request, 'editar_hospede.html', {'form': form, 'hospede': hospede})
+
+def deletar_hospede(request, id):
+    hospede = get_object_or_404(Hospede, id=id)
+    if request.method == 'POST':
+        hospede.delete()
+        return redirect('listar_hospedes')  # Redireciona para a lista de hóspedes
+    
+    return render(request, 'confirmar_delecao.html', {'hospede': hospede})

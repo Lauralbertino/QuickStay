@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Criar Reserva</title>
-</head>
-<body>
-    <h2>Criar Nova Reserva</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Criar Reserva</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Criar Nova Reserva</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="id_hospede" class="form-label">Hóspede</label>
+        {{ form.hospede }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_quarto" class="form-label">Quarto</label>
+        {{ form.quarto }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_check_in" class="form-label">Check-in</label>
+        {{ form.check_in }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_check_out" class="form-label">Check-out</label>
+        {{ form.check_out }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Criar Reserva</button>
+</form>
+
+{% endblock %}

@@ -1,8 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h2>Lista de Reservas</h2>
-<a href="{% url 'criar_reserva' %}">Adicionar Reserva</a>
-<ul>
-    {% for reserva in reservas %}
-    <li>{{ reserva.hospede.nome }} - Quarto {{ reserva.quarto.numero }} - 
-        Check-in: {{ reserva.check_in }} - Check-out: {{ reserva.check_out }}</li>
-    {% endfor %}
-</ul>
+
+<!-- Botão para adicionar reserva -->
+<a href="{% url 'criar_reserva' %}" class="btn btn-primary mb-3">Adicionar Reserva</a>
+
+<!-- Tabela de Reservas -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hóspede</th>
+            <th scope="col">Quarto</th>
+            <th scope="col">Check-in</th>
+            <th scope="col">Check-out</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in reservas %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ reserva.hospede.nome }}</td>
+            <td>{{ reserva.quarto.numero }}</td>
+            <td>{{ reserva.check_in }}</td>
+            <td>{{ reserva.check_out }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">Nenhuma reserva encontrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
