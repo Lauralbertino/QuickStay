@@ -1,0 +1,8 @@
+<h2>Lista de Reservas</h2>
+<a href="{% url 'criar_reserva' %}">Adicionar Reserva</a>
+<ul>
+    {% for reserva in reservas %}
+    <li>{{ reserva.hospede.nome }} - Quarto {{ reserva.quarto.numero }} - 
+        Check-in: {{ reserva.check_in }} - Check-out: {{ reserva.check_out }}</li>
+    {% endfor %}
+</ul>

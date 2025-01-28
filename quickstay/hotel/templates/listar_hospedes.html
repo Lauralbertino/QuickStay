@@ -1,0 +1,7 @@
+<h2>Lista de Hóspedes</h2>
+<a href="{% url 'criar_hospede' %}">Adicionar Hóspede</a>
+<ul>
+    {% for hospede in hospedes %}
+    <li>{{ hospede.nome }} - {{ hospede.telefone }} - {{ hospede.email }}</li>
+    {% endfor %}
+</ul>
