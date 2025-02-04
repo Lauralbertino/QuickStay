@@ -9,4 +9,6 @@ urlpatterns = [
     path('hospedes/deletar/<int:id>/', views.deletar_hospede, name='deletar_hospede'),
     path("reservas/", views.listar_reservas, name="listar_reservas"),
     path("reservas/novo/", views.criar_reserva, name="criar_reserva"),
+    path("quartos/", views.listar_quartos, name="listar_quartos"),
+    path('instituicoes/', views.listar_instituicoes, name='listar_instituicoes'),
 ]

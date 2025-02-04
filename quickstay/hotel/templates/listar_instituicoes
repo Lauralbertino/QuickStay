@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Instituições</h2>
+
+<!-- Tabela de Instituições -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Cidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for instituicao in instituicoes %}
+        <tr>
+            <td>{{ instituicao.nome }}</td>
+            <td>{{ instituicao.endereco }}</td>
+            <td>{{ instituicao.telefone }}</td>
+            <td>{{ instituicao.cidade }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center">Nenhuma instituição encontrada</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Botão para voltar para a Home -->
+<div class="text-center mt-4">
+    <a href="{% url 'home' %}" class="btn btn-primary">Voltar para Home</a>
+</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 # quickstay/hotel/admin.py
 from django.contrib import admin
-from .models import Hospede, Reserva, Quarto
+from .models import Hospede, Reserva, Quarto, Instituicao
 
 # Registro do modelo Hospede
 @admin.register(Hospede)
@@ -22,3 +22,10 @@ class QuartoAdmin(admin.ModelAdmin):
     list_display = ('numero', 'tipo', 'preco_por_noite', 'capacidade')
     search_fields = ('numero', 'tipo')
     list_filter = ('tipo',)
+
+# Registro da instituicao
+@admin.register(Instituicao)
+class InstituicaoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'endereco', 'telefone', 'cidade')
+    search_fields = ('nome', 'endereco')
+    list_filter = ('nome',)

@@ -6,21 +6,19 @@
     <thead>
         <tr>
             <th scope="col">Nome</th>
+            <th scope="col">Cidade</th>
             <th scope="col">Telefone</th>
             <th scope="col">Email</th>
-            <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>
         {% for hospede in hospedes %}
         <tr>
             <td>{{ hospede.nome }}</td>
+            <td>{{ hospede.cidade }}</td>
             <td>{{ hospede.telefone }}</td>
             <td>{{ hospede.email }}</td>
-            <td>
-                <a href="{% url 'editar_hospede' hospede.id %}" class="btn btn-warning btn-sm">Editar</a>
-                <a href="{% url 'deletar_hospede' hospede.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-            </td>
+            
         </tr>
         {% empty %}
         <tr>
@@ -29,4 +27,8 @@
         {% endfor %}
     </tbody>
 </table>
+<!-- Botão para voltar para a home -->
+<div class="text-center mt-4">
+    <a href="{% url 'home' %}" class="btn btn-primary">Voltar para tela inicial</a>
+</div>
 {% endblock %}

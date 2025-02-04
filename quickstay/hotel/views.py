@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Hospede, Quarto, Reserva
+from .models import Hospede, Quarto, Reserva,Instituicao 
 from .forms import HospedeForm, ReservaForm
 
 def home(request):
@@ -53,3 +53,11 @@ def deletar_hospede(request, id):
         return redirect('listar_hospedes')  # Redireciona para a lista de hóspedes
     
     return render(request, 'confirmar_delecao.html', {'hospede': hospede})
+
+def listar_quartos(request):
+    quartos = Quarto.objects.all()
+    return render(request, "listar_quartos.html", {"quartos":quartos })
+
+def listar_instituicoes(request):
+    instituicoes = Instituicao.objects.all()
+    return render(request, "listar_instituicoes.html", {"instituicoes": instituicoes})

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Quartos</h2>
+
+
+<!-- Tabela de Quartos-->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Número</th>
+            <th scope="col">Capacidade</th>
+            <th scope="col">Valor da diária</th>
+            <th scope="col">Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quarto in quartos %}
+        <tr>
+            <td>{{ quarto.numero }}</td>
+            <td>{{ quarto.capacidade }}</td>
+            <td>{{ quarto.preco_por_noite }}</td>
+            <td>{{ quarto.tipo }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">Nenhum quarto disponível</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Botão para voltar para a home -->
+<div class="text-center mt-4">
+    <a href="{% url 'home' %}" class="btn btn-primary">Voltar para tela inicial</a>
+</div>
+{% endblock %}
